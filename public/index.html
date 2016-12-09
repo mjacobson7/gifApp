@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="gifApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./toastr.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  </head>
+  <body ng-controller="mainController">
+
+    <div class="body">
+          <img class="logo" src="./assets/gifster.png" alt="">
+          <div class="searchContainer" action="index.html" method="post">
+            <form id="inputContainer" class="form-group">
+              <input id="input" type="text" class="form-control" placeholder="Search Amazing Gifs!" autocomplete="off" ng-model="text">
+              <button id="button" type="submit" class="btn btn-primary" ng-click="search(text)"></button>
+            </form>
+          </div>
+
+
+          <h2 class="copyright">{{searchTerm}}</h2>
+        <div class="bodyContainer">
+          <div id="imageContainer" class="btn" data-clipboard-text="{{gif.bitly_gif_url}}" ng-repeat="gif in gifs">
+              <img class="image" ng-src="{{gif.images.downsized.url}}" class="img-responsive" alt="Responsive image" ng-click="copied()">
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+          <div class="container" id="footerContainer">
+            <p class="copyright">Max Jacobson © 2016</p>
+          </div>
+        </nav>
+    </div>
+
+
+
+
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+  <script src="./toastr.js" charset="utf-8"></script>
+  <script src="./clipboard.min.js" charset="utf-8"></script>
+  <script src="./mainController.js" charset="utf-8"></script>
+  <script src="./mainService.js" charset="utf-8"></script>
+  <script>
+    var clipboard = new Clipboard('.btn');
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
+
+</html>
