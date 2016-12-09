@@ -10,7 +10,6 @@ angular.module('gifApp', [])
       }
       var item = textArray.join("");
       mainService.search(item).then(function(response) {
-        console.log(response.data.data);
         if(response.data.data.length !== 0) {
             $scope.gifs = response.data.data;
             $scope.searchTerm = text;
