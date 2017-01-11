@@ -15,6 +15,12 @@ html {
   margin-top: 50px;
 }
 
+@media (max-width: 360px) {
+  .logo {
+    height: 80px;
+  }
+}
+
 .searchContainer {
   height: 150px;
   display: flex;
@@ -131,4 +137,8 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
 }
